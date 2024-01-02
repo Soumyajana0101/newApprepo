@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, Button,StyleSheet, ScrollView} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient'
  
 const Account = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,7 +36,7 @@ const Account = () => {
  
   const saveData= async() => {
         console.warn(title)
-        const url = "http://localhost:3000/users";
+        const url = "http://10.0.2.2:3000/users";
         let result = await fetch(url,{
             method :"POST",
             headers:{
@@ -43,6 +44,8 @@ const Account = () => {
             },
             body:JSON.stringify({title,description,price,discountPercentage,rating,stock,brand,category,thumbnail})
         });
+
+        
         result = await  result.json();
         if(result){
           console.warn("product added successfully")
@@ -50,13 +53,13 @@ const Account = () => {
   }
  
   return (
-    <View style = {styles.container}>
+    <LinearGradient colors = {['#606060','#D3D3D3']} >
       
       {isLoggedIn ? (
         <View style = {styles.innercontainer}>
         <View style = {styles.textfieldcontainer}>
           <ScrollView>
-            <Text style = {{textAlign:'center'}}>Add New Products</Text>
+            <Text style = {{textAlign:'center',color:'white'}}>Add New Products</Text>
         
         
         <View style = {styles.input}>
@@ -120,7 +123,7 @@ const Account = () => {
 
         <View style = {styles.buttonfieldcontainer}>
          <View style = {styles.button}>
-           <Button  title="Add Product" onPress={saveData} /></View>
+           <Button style = {styles.button} title="Add Product" onPress={saveData} /></View>
          <View style = {styles.button}>
            <Button title="Logout" onPress={handleLOgout} /></View>
         </View>
@@ -151,7 +154,7 @@ const Account = () => {
         </View>
         </View>
       )}
-   </View>
+   </LinearGradient>
   );
 };
  
@@ -175,7 +178,7 @@ container:{
     //  borderWidth:1,
     margin :10,
     // backgroundColor:"#7d7f7c",
-    height : 600
+    height : 700
 },
 input:{
     height:30,
@@ -188,12 +191,13 @@ input:{
     borderRadius:10
     
 },button:{
-    
-     height: 300,
+    color:'#D3D3D3',
+    height: 300,
     width: 200,
     flex:1,
     alignItems: 'center',
-    justifyContent:'center'
+    justifyContent:'center',
+    borderRadius:20
     
 },textfieldcontainer:{
     paddingTop :10,

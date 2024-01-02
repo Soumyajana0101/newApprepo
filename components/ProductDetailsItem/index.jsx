@@ -1,6 +1,7 @@
 import { StyleSheet,View,Text,FlatList,Image } from "react-native";
 import { Context } from "../../context";
 import { useContext } from "react";
+import { LinearGradient } from 'expo-linear-gradient';
  
 export default function ProductDetailsItem({productDetailsdata}){
  
@@ -16,24 +17,16 @@ export default function ProductDetailsItem({productDetailsdata}){
         
            
                 
-                <View style ={styles.outerContainer}>
-                   {/* <View style = {styles.container}>
-                    <Image source = {{uri: productDetailsdata.thumbnail}}
-                        />
-                </View> */}
-                
-                
-                {/* <View style = {styles.container}>  */}
-                    {/* <Image>{productDetailsdata.thumbnail}
-                        </Image> */}
+                <LinearGradient colors = {['#606060','#D3D3D3']} style ={styles.outerContainer}>
+                  
                     <Image source = {{uri : productDetailsdata.thumbnail}} style = {styles.ImageStyle}/>
                     <Text style = {styles.textStyle}>{"Product Name - "+productDetailsdata.title}</Text>
                     <Text style = {styles.textStyle}>{"Price - $ "+productDetailsdata.price}</Text>
                     <Text style = {styles.textStyle}>{"User Rating - "+productDetailsdata.rating}</Text>
                     <Text style = {styles.textStyle}>{"Category - "+productDetailsdata.category}</Text>
                     <Text style = {styles.textStyle}>{"Descripion - "+productDetailsdata.description}</Text>
-            </View>
-            // </View>
+            </LinearGradient>
+        
             
     )
 }

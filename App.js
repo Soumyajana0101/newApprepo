@@ -20,8 +20,18 @@ function BottomTabs() {
   return (
     <Tab.Navigator>
     
-      <Tab.Screen name='Home' component={Home} />
-      <Tab.Screen name='Account' component={Account} />
+      <Tab.Screen name='Home' component={Home} options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Entypo name="home" size={25} color={'#606060'} />
+          ),
+        }} />
+      <Tab.Screen name='Account' component={Account} options = {{
+        tabBarLabel: 'Account',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="account-circle" size={25} color={'#606060'}/> 
+            ),
+            }}/>
       
     </Tab.Navigator>
   )

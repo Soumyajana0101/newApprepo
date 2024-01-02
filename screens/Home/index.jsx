@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Context } from "../../context";
 
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from 'expo-linear-gradient'
  
 // function putImage(){
 //     currentimage = <FlatList
@@ -47,7 +48,7 @@ export default function Home() {
  
  
     return (
-        <View>
+        <LinearGradient colors = {['#606060','#D3D3D3']}>
             <FlatList
                 data={products}
                 renderItem={(itemData) =>
@@ -62,7 +63,7 @@ export default function Home() {
                 
                 keyExtractor={(itemData) => itemData.id}
                 numColumns={2} />
-        </View>
+        </LinearGradient>
     )
 }
  
